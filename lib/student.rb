@@ -72,7 +72,6 @@ class Student
     SQL
 
     
-    result = DB[:conn].execute(sql, name)[0]
-    Student.new(result[0], result[1], result[2])
+    result = DB[:conn].execute(sql, name).map {|student| Student.new(student[0], student[1], student[2])}
   end
 end
